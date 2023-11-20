@@ -115,7 +115,7 @@ but_divX.grid(row=3, column=0)
 but_xSqr = tk.Button(calc, text="x^2", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14))
 but_xSqr.grid(row=3, column=1)
 
-btnsqrt = tk.Button(calc, text="√", command=lambda: add_to_calculation("sqrt("), width=5, font=("Arial", 14))
+but_sqrt = tk.Button(calc, text="√", command=lambda: add_to_calculation("sqrt("), width=5, font=("Arial", 14))
 btnsqrt.grid(row=3, column=2)
 
 # button /
