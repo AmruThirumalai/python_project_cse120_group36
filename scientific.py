@@ -122,7 +122,7 @@ but_sqrt.grid(row=3, column=2)
 but_div = tk.Button(calc, text="/", command=lambda: add_to_calculation("/"), width=5, font=("Arial", 14))
 but_div.grid(row=3, column=3)
 
-btnln = tk.Button(calc, text='ln', command=lambda: add_to_calculation('ln('), width=5, font=('Arial', 14))
+but_ln = tk.Button(calc, text='ln', command=lambda: add_to_calculation('ln('), width=5, font=('Arial', 14))
 btnln.grid(row=3, column=4)
 # end row 3
 
