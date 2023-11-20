@@ -209,7 +209,7 @@ but_close.grid(row=7, column=2)
 but_equals = tk.Button(calc, text="=", command=evaluate_calculation, width=5, font=("Arial", 14))
 but_equals.grid(row=7, column=3)
 
-btne = tk.Button(calc, text='e', command=lambda: add_to_calculation(math.e), width=5, font=('Arial', 14))
+but_e = tk.Button(calc, text='e', command=lambda: add_to_calculation(math.e), width=5, font=('Arial', 14))
 btne.grid(row=7, column=4)
 
 btncomma = tk.Button(calc, text=',', command=lambda: add_to_calculation(','), width=5, font=('Arial', 14))
