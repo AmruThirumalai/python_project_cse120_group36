@@ -123,7 +123,7 @@ but_div = tk.Button(calc, text="/", command=lambda: add_to_calculation("/"), wid
 but_div.grid(row=3, column=3)
 
 but_ln = tk.Button(calc, text='ln', command=lambda: add_to_calculation('ln('), width=5, font=('Arial', 14))
-btnln.grid(row=3, column=4)
+but_ln.grid(row=3, column=4)
 # end row 3
 
 
