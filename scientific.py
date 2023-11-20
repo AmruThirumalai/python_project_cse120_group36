@@ -191,7 +191,7 @@ btnpi = tk.Button(calc, text='π', command=lambda: add_to_calculation(math.pi), 
 btnpi.grid(row=6, column=4)
 
 btnprime = tk.Button(calc, text='prime', command=lambda: add_to_calculation('testprime('), width=5, font=('Arial', 14))
-btnprime.grid(row=6, column=5)
+but_prime.grid(row=6, column=5)
 # end row 6
 
 # start row 7
