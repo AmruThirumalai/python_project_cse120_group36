@@ -103,7 +103,7 @@ but_clear.grid(row=2, column=1)
 but_delete = tk.Button(calc, text="<=", command=lambda: add_to_calculation(""), width=11, font=("Arial", 14))
 but_delete.grid(row=2, column=2, columnspan=2)
 
-btnfac = tk.Button(calc, text='!', command=lambda: add_to_calculation('factorial('), width=5, font=('Arial', 14))
+but_fac = tk.Button(calc, text='!', command=lambda: add_to_calculation('factorial('), width=5, font=('Arial', 14))
 btnfac.grid(row=2, column=4)
 # end row 2
 
