@@ -92,6 +92,11 @@ def square_random_number(x, y):
     except:
         return 'Error:Domain'
 
+def fraction(x, y):
+    try:
+        return Fraction(x,y)
+    except:
+        return 'Error:Domain'
 
 # End
 # ==============================
@@ -118,6 +123,11 @@ def clear_field():
     global calculation
     calculation = ""
     text_box.delete(1.0, "end")
+
+def backspace():
+    global calculation
+    calculation = calculation[:-1]
+    text_box.delete('end-2c')
 
 
 # Violet = 7F00FF
@@ -146,14 +156,14 @@ but_clear = tk.Button(calc, text="CE", command=clear_field, width=5, font=("Aria
                       fg="#006B88", bg="#FFFFFF")
 but_clear.grid(row=2, column=1)
 
-but_delete = tk.Button(calc, text="<=", command=lambda: add_to_calculation(""), width=11, font=("Arial", 14),
+but_delete = tk.Button(calc, text="<=", command=backspace, width=11, font=("Arial", 14),
                        fg="#0D98BA", bg="#FFFFFF")
 but_delete.grid(row=2, column=2, columnspan=2)
 
 but_fac = tk.Button(calc, text='!', command=lambda: add_to_calculation('factorial('), width=5, font=('Arial', 14),
                     fg="#287233", bg="#FFFFFF")
 but_fac.grid(row=2, column=4)
-but_dec_to_frac = tk.Button(calc, text="d->f", command=lambda: add_to_calculation("dec_to_frac("), width=5,
+but_dec_to_frac = tk.Button(calc, text="d→f", command=lambda: add_to_calculation("dec_to_frac("), width=5,
                             font=('Arial', 14))
 but_dec_to_frac.grid(row=2, column=5)
 # end row 2
@@ -172,6 +182,9 @@ but_sqrt = tk.Button(calc, text="√", command=lambda: add_to_calculation("sqrt(
                      fg="#287233", bg="#FFFFFF")
 but_sqrt.grid(row=3, column=2)
 
+but_frac_to_dec = tk.Button(calc, text="f→d", command=lambda: add_to_calculation("frac_to_dec("), width=5,
+                            font=('Arial', 14))
+but_frac_to_dec.grid(row=3, column=5)
 # button /
 but_div = tk.Button(calc, text="/", command=lambda: add_to_calculation("/"), width=5, font=("Arial", 14),
                     fg="#660000", bg="#FFFFFF")
@@ -207,6 +220,10 @@ but_multi.grid(row=4, column=3)
 but_log = tk.Button(calc, text='log', command=lambda: add_to_calculation('log('), width=5, font=('Arial', 14),
                    fg="#B44C43", bg="#FFFFFF")
 but_log.grid(row=4, column=4)
+
+but_frac = tk.Button(calc, text='frac', command=lambda: add_to_calculation('fraction('), width=5, font=('Arial', 14),
+                   fg="#B44C43", bg="#FFFFFF")
+but_frac.grid(row=4, column=5)
 # end row 4
 
 # start row 5
