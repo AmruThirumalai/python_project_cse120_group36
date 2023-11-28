@@ -33,7 +33,6 @@ def clear_field():
 # White = FFFFFF
 
 
-
 calc = tk.Tk()
 calc.geometry("300x400")
 
