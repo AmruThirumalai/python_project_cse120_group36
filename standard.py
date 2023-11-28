@@ -26,6 +26,7 @@ def clear_field():
     calculation = ""
     text_box.delete(1.0, "end")
 
+
 # Violet = 7F00FF
 # Cobalt Green = 660000
 # Ink Blue = 006B88
@@ -34,41 +35,41 @@ def clear_field():
 
 
 calc = tk.Tk()
+calc.title("Standard Calculator")
 calc.geometry("300x400")
-
 
 # row 1
 text_box = tk.Text(calc, height=2, width=16, font=("Arial", 24))
 text_box.grid(columnspan=6)
 
 # start row 2
-but_percent = tk.Button(calc, text="%", command=lambda: add_to_calculation("%"), width=5, font=("Arial", 14),
-                        fg="#006B88", bg="#FFFFFF")
-but_percent.grid(row=2, column=0)
-
-but_clear = tk.Button(calc, text="CE", command=clear_field, width=5, font=("Arial", 14),
-                      fg="#006b88", bg="#FFFFFF")
-but_clear.grid(row=2, column=1)
-
-but_delete = tk.Button(calc, text="<=", command=lambda: add_to_calculation(""), width=11, font=("Arial", 14),
-                       fg="#0D98BA", bg="#FFFFFF")
-but_delete.grid(row=2, column=2, columnspan=2)
-# end row 2
-
-# start row 3
-
-but_divX = tk.Button(calc, text="1/x", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
-                     fg="#006B88", bg="#FFFFFF")
-but_divX.grid(row=3, column=0)
 
 but_xSqr = tk.Button(calc, text="x^2", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
                      fg="#006B88", bg="#FFFFFF")
-but_xSqr.grid(row=3, column=1)
+but_xSqr.grid(row=2, column=0)
 
 but_div2X = tk.Button(calc, text="2/x", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
                       fg="#006B88", bg="#FFFFFF")
-but_div2X.grid(row=3, column=2)
+but_div2X.grid(row=2, column=1)
 
+but_clear = tk.Button(calc, text="CE", command=clear_field, width=11, font=("Arial", 14),
+                      fg="#006b88", bg="#FFFFFF")
+but_clear.grid(row=2, column=2, columnspan=2)
+# end row 2
+
+# start row 3
+#
+but_open = tk.Button(calc, text="(", command=lambda: add_to_calculation("("), width=5, font=("Arial", 14),
+                     fg="#006B88", bg="#FFFFFF")
+but_open.grid(row=3, column=0)
+
+but_close = tk.Button(calc, text=")", command=lambda: add_to_calculation(")"), width=5, font=("Arial", 14),
+                      fg="#006B88", bg="#FFFFFF")
+but_close.grid(row=3, column=1)
+
+but_percent = tk.Button(calc, text="%", command=lambda: add_to_calculation("%"), width=5, font=("Arial", 14),
+                        fg="#006B88", bg="#FFFFFF")
+but_percent.grid(row=3, column=2)
 # button /
 but_div = tk.Button(calc, text="/", command=lambda: add_to_calculation("/"), width=5, font=("Arial", 14),
                     fg="#660000", bg="#FFFFFF")
@@ -145,23 +146,20 @@ but_plus.grid(row=6, column=3)
 # end row 6
 
 # start row 7
-#
-but_open = tk.Button(calc, text="(", command=lambda: add_to_calculation("("), width=5, font=("Arial", 14),
-                     fg="#006B88", bg="#FFFFFF")
-but_open.grid(row=7, column=0)
+
 
 # number 0
 but0 = tk.Button(calc, text="0", command=lambda: add_to_calculation(0), width=5, font=("Arial", 14),
                  fg="#7F00FF", bg="#FFFFFF")
-but0.grid(row=7, column=1)
+but0.grid(row=7, column=0)
 
-but_close = tk.Button(calc, text=")", command=lambda: add_to_calculation(")"), width=5, font=("Arial", 14),
-                      fg="#006B88", bg="#FFFFFF")
-but_close.grid(row=7, column=2)
+but_period = tk.Button(calc, text=".", command=lambda: add_to_calculation("."), width=5, font=("Arial", 14),
+                       fg="#7F00FF", bg="#FFFFFF")
+but_period.grid(row=7, column=1)
 
-but_equals = tk.Button(calc, text="=", command=evaluate_calculation, width=5, font=("Arial", 14),
+but_equals = tk.Button(calc, text="=", command=evaluate_calculation, width=11, font=("Arial", 14),
                        fg="#660000", bg="#FFFFFF")
-but_equals.grid(row=7, column=3)
+but_equals.grid(row=7, column=2, columnspan=2)
 # end row 7
 
 calc.mainloop()
