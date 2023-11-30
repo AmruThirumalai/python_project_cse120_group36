@@ -1,5 +1,13 @@
 import tkinter as tk
 
+DEFAULT_FONT_STYLE = ("Arial", 14)
+
+WHITE = "#FFFFFF"
+BLUE_GREEN = "#0D98BA"
+INK_BLUE = "#006B88"
+COBALT_GREEN = "#660000"
+VIOLET = "#7F00FF"
+
 calculation = ''
 
 
