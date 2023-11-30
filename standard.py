@@ -26,12 +26,6 @@ def clear_field():
     calculation = ""
     text_box.delete(1.0, "end")
 
-# Violet = 7F00FF
-# Cobalt Green = 660000
-# Ink Blue = 006B88
-# Blue Green = 0D98BA
-# White = FFFFFF
-
 
 calc = tk.Tk()
 calc.geometry("300x400")
