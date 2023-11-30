@@ -34,9 +34,9 @@ def clear_field():
     calculation = ""
     text_box.delete(1.0, "end")
 
+
 calc = tk.Tk()
 calc.geometry("300x400")
-
 
 # row 1
 text_box = tk.Text(calc, height=2, width=16, font=("Arial", 24))
