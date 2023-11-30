@@ -36,7 +36,6 @@ def clear_field():
 
 
 calc = tk.Tk()
-calc.title("Standard Calculator")
 calc.geometry("300x400")
 
 # row 1
@@ -44,35 +43,38 @@ text_box = tk.Text(calc, height=2, width=16, font=("Arial", 24))
 text_box.grid(columnspan=6)
 
 # start row 2
-
-but_xSqr = tk.Button(calc, text="x^2", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+but_open = tk.Button(calc, text="(", command=lambda: add_to_calculation("("), width=5, font=("Arial", 14),
                      fg=INK_BLUE, bg=WHITE)
-but_xSqr.grid(row=2, column=0)
-
-but_div2X = tk.Button(calc, text="2/x", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+but_open.grid(row=2, column=0)
+but_close = tk.Button(calc, text=")", command=lambda: add_to_calculation(")"), width=5, font=("Arial", 14),
                       fg=INK_BLUE, bg=WHITE)
-but_div2X.grid(row=2, column=1)
+but_close.grid(row=2, column=1)
 
-but_clear = tk.Button(calc, text="CE", command=clear_field, width=11, font=("Arial", 14),
+but_clear = tk.Button(calc, text="CE", command=clear_field, width=5, font=("Arial", 14),
                       fg=INK_BLUE, bg=WHITE)
-but_clear.grid(row=2, column=2, columnspan=2)
+but_clear.grid(row=2, column=2)
+
+but_delete = tk.Button(calc, text="<=", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+                       fg=BLUE_GREEN, bg=WHITE)
+but_delete.grid(row=2, column=3)
+
 # end row 2
 
 # start row 3
-#
-but_open = tk.Button(calc, text="(", command=lambda: add_to_calculation("("), width=5, font=("Arial", 14),
-                     fg=INK_BLUE, bg=WHITE)
-but_open.grid(row=3, column=0)
-
-but_close = tk.Button(calc, text=")", command=lambda: add_to_calculation(")"), width=5, font=("Arial", 14),
-                      fg=INK_BLUE, bg=WHITE)
-but_close.grid(row=3, column=1)
-
-but_percent = tk.Button(calc, text="%", command=lambda: add_to_calculation("%"), width=5, font=("Arial", 14),
+but_squared = tk.Button(calc, text="x\u00b2", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
                         fg=INK_BLUE, bg=WHITE)
-but_percent.grid(row=3, column=2)
+but_squared.grid(row=3, column=0)
+
+but_sqrt = tk.Button(calc, text="\u221ax", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+                     fg=INK_BLUE, bg=WHITE)
+but_sqrt.grid(row=3, column=1)
+
+but_divX = tk.Button(calc, text="1/x", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+                     fg="#006B88", bg="#FFFFFF")
+but_divX.grid(row=3, column=2)
+
 # button /
-but_div = tk.Button(calc, text="/", command=lambda: add_to_calculation("/"), width=5, font=("Arial", 14),
+but_div = tk.Button(calc, text="\u00F7", command=lambda: add_to_calculation("/"), width=5, font=("Arial", 14),
                     fg=COBALT_GREEN, bg=WHITE)
 but_div.grid(row=3, column=3)
 # end row 3
@@ -95,7 +97,7 @@ but9 = tk.Button(calc, text="9", command=lambda: add_to_calculation(9), width=5,
 but9.grid(row=4, column=2)
 
 # button *
-but_multi = tk.Button(calc, text="*", command=lambda: add_to_calculation("*"), width=5, font=("Arial", 14),
+but_multi = tk.Button(calc, text="\u00D7", command=lambda: add_to_calculation("*"), width=5, font=("Arial", 14),
                       fg=COBALT_GREEN, bg=WHITE)
 but_multi.grid(row=4, column=3)
 # end row 4
@@ -147,17 +149,15 @@ but_plus.grid(row=6, column=3)
 # end row 6
 
 # start row 7
-
+#
+but_period = tk.Button(calc, text=".", command= lambda: add_to_calculation("."), width=5, font=("Arial", 14),
+                       fg=VIOLET, bg=WHITE)
+but_period.grid(row=7, column=0)
 
 # number 0
 but0 = tk.Button(calc, text="0", command=lambda: add_to_calculation(0), width=5, font=("Arial", 14),
                  fg=VIOLET, bg=WHITE)
-but0.grid(row=7, column=0)
-
-but_period = tk.Button(calc, text=".", command=lambda: add_to_calculation("."), width=5, font=("Arial", 14),
-                       fg=VIOLET, bg=WHITE)
-but_period.grid(row=7, column=1)
-
+but0.grid(row=7, column=1)
 but_equals = tk.Button(calc, text="=", command=evaluate_calculation, width=11, font=("Arial", 14),
                        fg=COBALT_GREEN, bg=WHITE)
 but_equals.grid(row=7, column=2, columnspan=2)
