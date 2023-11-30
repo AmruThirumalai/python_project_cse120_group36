@@ -1,13 +1,5 @@
 import tkinter as tk
 
-DEFAULT_FONT_STYLE = ("Arial", 14)
-
-WHITE = "#FFFFFF"
-BLUE_GREEN = "#0D98BA"
-INK_BLUE = "#006B88"
-COBALT_GREEN = "#660000"
-VIOLET = "#7F00FF"
-
 calculation = ''
 
 
@@ -34,9 +26,16 @@ def clear_field():
     calculation = ""
     text_box.delete(1.0, "end")
 
+# Violet = 7F00FF
+# Cobalt Green = 660000
+# Ink Blue = 006B88
+# Blue Green = 0D98BA
+# White = FFFFFF
+
 
 calc = tk.Tk()
 calc.geometry("300x400")
+
 
 # row 1
 text_box = tk.Text(calc, height=2, width=16, font=("Arial", 24))
