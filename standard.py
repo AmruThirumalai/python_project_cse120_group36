@@ -35,6 +35,12 @@ def clear_field():
     text_box.delete(1.0, "end")
 
 
+def backspace():
+    global calculation
+    calculation = calculation[:-1]
+    text_box.delete('end-2c')
+
+
 calc = tk.Tk()
 calc.geometry("300x400")
 
@@ -54,7 +60,7 @@ but_clear = tk.Button(calc, text="CE", command=clear_field, width=5, font=("Aria
                       fg=INK_BLUE, bg=WHITE)
 but_clear.grid(row=2, column=2)
 
-but_delete = tk.Button(calc, text="<=", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+but_delete = tk.Button(calc, text="<=", command=backspace, width=5, font=("Arial", 14),
                        fg=BLUE_GREEN, bg=WHITE)
 but_delete.grid(row=2, column=3)
 
