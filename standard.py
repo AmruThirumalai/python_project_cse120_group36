@@ -1,4 +1,6 @@
 import tkinter as tk
+import math
+
 
 DEFAULT_FONT_STYLE = ("Arial", 14)
 
@@ -35,6 +37,27 @@ def clear_field():
     text_box.delete(1.0, "end")
 
 
+def backspace():
+    global calculation
+    calculation = calculation[:-1]
+    text_box.delete('end-2c')
+
+
+def sqrt(n):
+    try:
+        return math.sqrt(n)
+    except:
+        return 'Error:Domain'
+
+
+def reciprocal(n):
+    return 1 / n
+
+
+def sqr(x):
+    return x ** 2
+
+
 calc = tk.Tk()
 calc.geometry("300x400")
 
@@ -54,22 +77,22 @@ but_clear = tk.Button(calc, text="CE", command=clear_field, width=5, font=("Aria
                       fg=INK_BLUE, bg=WHITE)
 but_clear.grid(row=2, column=2)
 
-but_delete = tk.Button(calc, text="<=", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+but_delete = tk.Button(calc, text="<=", command=backspace, width=5, font=("Arial", 14),
                        fg=BLUE_GREEN, bg=WHITE)
 but_delete.grid(row=2, column=3)
 
 # end row 2
 
 # start row 3
-but_squared = tk.Button(calc, text="x\u00b2", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+but_squared = tk.Button(calc, text="x\u00b2", command=lambda: add_to_calculation("sqr("), width=5, font=("Arial", 14),
                         fg=INK_BLUE, bg=WHITE)
 but_squared.grid(row=3, column=0)
 
-but_sqrt = tk.Button(calc, text="\u221ax", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+but_sqrt = tk.Button(calc, text="\u221ax", command=lambda: add_to_calculation("sqrt("), width=5, font=("Arial", 14),
                      fg=INK_BLUE, bg=WHITE)
 but_sqrt.grid(row=3, column=1)
 
-but_divX = tk.Button(calc, text="1/x", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+but_divX = tk.Button(calc, text="1/x", command=lambda: add_to_calculation("reciprocal("), width=5, font=("Arial", 14),
                      fg="#006B88", bg="#FFFFFF")
 but_divX.grid(row=3, column=2)
 
