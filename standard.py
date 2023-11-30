@@ -93,7 +93,7 @@ but_sqrt = tk.Button(calc, text="\u221ax", command=lambda: add_to_calculation("s
 but_sqrt.grid(row=3, column=1)
 
 but_divX = tk.Button(calc, text="1/x", command=lambda: add_to_calculation("reciprocal("), width=5, font=DEFAULT_FONT_STYLE,
-                     fg="#006B88", bg="#FFFFFF")
+                     fg=INK_BLUE, bg=WHITE)
 but_divX.grid(row=3, column=2)
 
 # button /
