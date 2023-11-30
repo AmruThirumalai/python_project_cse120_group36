@@ -1,125 +1,15 @@
-import math
-
 import tkinter as tk
 
-from decimal import Decimal
+DEFAULT_FONT_STYLE = ("Arial", 14)
 
-from fractions import Fraction
+WHITE = "#FFFFFF"
+BLUE_GREEN = "#0D98BA"
+INK_BLUE = "#006B88"
+COBALT_GREEN = "#660000"
+VIOLET = "#7F00FF"
 
 calculation = ''
 
-# ==============================
-# Math Functions
-def ln(x):
-    try:
-        return math.log(x)
-    except:
-        return 'Error:Domain'
-
-
-def log(x):
-    try:
-        return math.log10(x)
-    except:
-        return 'Error:Domain'
-
-
-def logbase(x, y):
-    try:
-        return math.log(x, y)
-    except:
-        return 'Error:Domain'
-
-
-def testprime(n):
-    if n <= 0:
-        return False
-    elif n == 1:
-        return False
-    elif n == 2:
-        return True
-    else:
-        for i in range(2, n):
-            if n % i == 0:
-                return False
-        else:
-            return True
-
-
-def factorial(n):
-    try:
-        return math.factorial(n)
-    except:
-        return 'Error:Domain'
-
-
-def sqrt(n):
-    try:
-        return math.sqrt(n)
-    except:
-        return 'Error:Domain'
-
-
-def reciprocal(n):
-    return 1 / n
-
-
-def frac_to_dec(x):
-    try:
-        return Decimal(x)
-    except:
-        return 'Error:Domain'
-
-
-def dec_to_frac(x, y):
-    try:
-        return Decimal(x / y)
-    except:
-        return 'Error:Domain'
-
-
-def absou(x):
-    try:
-        return math.fabs(x)
-    except:
-        return 'Error:Domain'
-
-
-def square_random_number(x, y):
-    try:
-        return pow(x, y)
-    except:
-        return 'Error:Domain'
-
-def binary(x):
-    binval = bin(x)
-    binval = binval[2:]
-    return binval
-
-def octal(x):
-    octval = oct(x)
-    octval = octval[2:]
-    return octval
-
-def sqr(x):
-    return x ** 2
-
-def radian(x):
-    return math.radians(x)
-
-# End
-# ==============================
-
-def check_parentheses():
-    global calculation
-    calculation = str(calculation)
-    calc_list = list(calculation)
-    open_count = calc_list.count('(')
-    close_count = calc_list.count(')')
-    while open_count > close_count:
-        calculation = calculation + ')'
-        close_count += 1
-    return calculation
 
 def add_to_calculation(symbol):
     global calculation
@@ -131,7 +21,6 @@ def add_to_calculation(symbol):
 def evaluate_calculation():
     global calculation
     try:
-        check_parentheses()
         calculation = str(eval(calculation))
         text_box.delete(1.0, "end")
         text_box.insert(1.0, calculation)
@@ -145,40 +34,13 @@ def clear_field():
     calculation = ""
     text_box.delete(1.0, "end")
 
-def backspace():
-    global calculation
-    calculation = calculation[:-1]
-    text_box.delete('end-2c')
-
-def store():
-    global calculation
-    global memhold
-    memhold = ''
-    memhold = calculation
-
-def memory():
-    global calculation
-    global memhold
-    add_to_calculation(memhold)
-
-
-
-# Violet = 7F00FF
-# Cobalt Green = 660000
-# Ink Blue = 006B88
-# Blue Green = 0D98BA
-# Emerald Green = 287233
-# Blue Lilac = 6C4675
-# Pearl Pink = B44C43
-# White = FFFFFF
-
 
 calc = tk.Tk()
-calc.geometry("1000x800")
+calc.geometry("300x400")
 
 # row 1
-text_box = tk.Text(calc, height=2, width=20, font=("Arial", 24))
-text_box.grid(columnspan=7)
+text_box = tk.Text(calc, height=2, width=16, font=("Arial", 24))
+text_box.grid(columnspan=6)
 
 # start row 2
 but_percent = tk.Button(calc, text="%", command=lambda: add_to_calculation("%"), width=5, font=("Arial", 14),
@@ -186,55 +48,32 @@ but_percent = tk.Button(calc, text="%", command=lambda: add_to_calculation("%"),
 but_percent.grid(row=2, column=0)
 
 but_clear = tk.Button(calc, text="CE", command=clear_field, width=5, font=("Arial", 14),
-                      fg="#006B88", bg="#FFFFFF")
+                      fg="#006b88", bg="#FFFFFF")
 but_clear.grid(row=2, column=1)
 
-but_delete = tk.Button(calc, text="<=", command=backspace, width=11, font=("Arial", 14),
+but_delete = tk.Button(calc, text="<=", command=lambda: add_to_calculation(""), width=11, font=("Arial", 14),
                        fg="#0D98BA", bg="#FFFFFF")
 but_delete.grid(row=2, column=2, columnspan=2)
-
-but_fac = tk.Button(calc, text='!', command=lambda: add_to_calculation('factorial('), width=5, font=('Arial', 14),
-                    fg="#287233", bg="#FFFFFF")
-but_fac.grid(row=2, column=4)
-but_dec_to_frac = tk.Button(calc, text="d→f", command=lambda: add_to_calculation("dec_to_frac("), width=5,
-                            font=('Arial', 14))
-but_dec_to_frac.grid(row=2, column=5)
-
-but_rad = tk.Button(calc, text='rad', command=lambda: add_to_calculation("radian("), width=5,
-                            font=('Arial', 14))
-but_rad.grid(row=2, column=6)
-
 # end row 2
 
 # start row 3
 
-but_divX = tk.Button(calc, text="1/x", command=lambda: add_to_calculation("reciprocal("), width=5, font=("Arial", 14),
+but_divX = tk.Button(calc, text="1/x", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
                      fg="#006B88", bg="#FFFFFF")
 but_divX.grid(row=3, column=0)
 
-but_xSqr = tk.Button(calc, text="x^2", command=lambda: add_to_calculation("sqr("), width=5, font=("Arial", 14),
+but_xSqr = tk.Button(calc, text="x^2", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
                      fg="#006B88", bg="#FFFFFF")
 but_xSqr.grid(row=3, column=1)
 
-but_sqrt = tk.Button(calc, text="√", command=lambda: add_to_calculation("sqrt("), width=5, font=("Arial", 14),
-                     fg="#287233", bg="#FFFFFF")
-but_sqrt.grid(row=3, column=2)
+but_div2X = tk.Button(calc, text="2/x", command=lambda: add_to_calculation(""), width=5, font=("Arial", 14),
+                      fg="#006B88", bg="#FFFFFF")
+but_div2X.grid(row=3, column=2)
 
-but_frac_to_dec = tk.Button(calc, text="f→d", command=lambda: add_to_calculation("frac_to_dec("), width=5,
-                            font=('Arial', 14))
-but_frac_to_dec.grid(row=3, column=5)
 # button /
 but_div = tk.Button(calc, text="/", command=lambda: add_to_calculation("/"), width=5, font=("Arial", 14),
                     fg="#660000", bg="#FFFFFF")
 but_div.grid(row=3, column=3)
-
-but_ln = tk.Button(calc, text='ln', command=lambda: add_to_calculation('ln('), width=5, font=('Arial', 14),
-                   fg="#B44C43", bg="#FFFFFF")
-but_ln.grid(row=3, column=4)
-
-but_store = tk.Button(calc, text='store', command=store, width=5, font=('Arial', 14),
-                   fg="#B44C43", bg="#FFFFFF")
-but_store.grid(row=3, column=6)
 # end row 3
 
 
@@ -258,18 +97,6 @@ but9.grid(row=4, column=2)
 but_multi = tk.Button(calc, text="*", command=lambda: add_to_calculation("*"), width=5, font=("Arial", 14),
                       fg="#660000", bg="#FFFFFF")
 but_multi.grid(row=4, column=3)
-
-but_log = tk.Button(calc, text='log', command=lambda: add_to_calculation('log('), width=5, font=('Arial', 14),
-                   fg="#B44C43", bg="#FFFFFF")
-but_log.grid(row=4, column=4)
-
-but_oct = tk.Button(calc, text='oct', command=lambda: add_to_calculation('octal('), width=5, font=('Arial', 14),
-                   fg="#B44C43", bg="#FFFFFF")
-but_oct.grid(row=4, column=5)
-
-but_mem = tk.Button(calc, text='mem', command=memory, width=5, font=('Arial', 14),
-                   fg="#B44C43", bg="#FFFFFF")
-but_mem.grid(row=4, column=6)
 # end row 4
 
 # start row 5
@@ -293,13 +120,6 @@ but_minus = tk.Button(calc, text="-", command=lambda: add_to_calculation("-"), w
                       fg="#660000", bg="#FFFFFF")
 but_minus.grid(row=5, column=3)
 
-but_logbase = tk.Button(calc, text='logb', command=lambda: add_to_calculation('logbase('), width=5, font=('Arial', 14),
-                       fg="#B44C43", bg="#FFFFFF")
-but_logbase.grid(row=5, column=4)
-
-but_bin = tk.Button(calc, text='bin', command=lambda: add_to_calculation('binary('), width=5, font=('Arial', 14),
-                       fg="#B44C43", bg="#FFFFFF")
-but_bin.grid(row=5, column=5)
 # end row 5
 
 # start row 6
@@ -323,13 +143,6 @@ but_plus = tk.Button(calc, text="+", command=lambda: add_to_calculation("+"), wi
                      fg="#660000", bg="#FFFFFF")
 but_plus.grid(row=6, column=3)
 
-but_pi = tk.Button(calc, text='π', command=lambda: add_to_calculation(math.pi), width=5, font=('Arial', 14),
-                  fg="#287233", bg="#FFFFFF")
-but_pi.grid(row=6, column=4)
-
-but_prime = tk.Button(calc, text='prime', command=lambda: add_to_calculation('testprime('), width=5, font=('Arial', 14),
-                     fg="#B44C43", bg="#FFFFFF")
-but_prime.grid(row=6, column=5)
 # end row 6
 
 # start row 7
@@ -350,14 +163,6 @@ but_close.grid(row=7, column=2)
 but_equals = tk.Button(calc, text="=", command=evaluate_calculation, width=5, font=("Arial", 14),
                        fg="#660000", bg="#FFFFFF")
 but_equals.grid(row=7, column=3)
-
-but_e = tk.Button(calc, text='e', command=lambda: add_to_calculation(math.e), width=5, font=('Arial', 14),
-                  fg="#287233", bg="#FFFFFF")
-but_e.grid(row=7, column=4)
-
-but_comma = tk.Button(calc, text=',', command=lambda: add_to_calculation(','), width=5, font=('Arial', 14),
-                      fg="#6C4675", bg="#FFFFFF")
-but_comma.grid(row=7, column=5)
 # end row 7
 
 calc.mainloop()
